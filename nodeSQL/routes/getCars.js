@@ -4,7 +4,7 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/getCars', (req, res) => {
-  connect.query('SELECT * FROM mainmodel', ()=> {
+  connect.query('SELECT * FROM mainmodel', (err, result)=> {
     if (err)
     {
       throw err; console.log(err);
@@ -17,7 +17,6 @@ router.get('/getCars', (req, res) => {
          message : "A selection",
          carData: result
        });
-
     }
   });
 });
