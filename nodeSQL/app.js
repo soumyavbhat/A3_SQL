@@ -26,9 +26,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(require('./routes/index', index));
-app.use(require('./routes/getCars', cars));
-app.use(require('./routes/api', api));
+app.use('/', require('./routes/index', index));
+app.use('/getCars', require('./routes/getCars', cars));
+app.use('/api', require('./routes/api', api));
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');

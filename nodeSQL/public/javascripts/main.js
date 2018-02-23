@@ -1,6 +1,7 @@
 (()=>{
 let getButtons = document.querySelectorAll('.getButton');
-let deleteB = document.querySelectorAll('.delete');
+let deleteButton = document.querySelectorAll('.deleteButton');
+let postButton = document.querySelectorAll('.postButton');
 
 function fetchData()
 {
@@ -19,7 +20,7 @@ function deleteData()
 {
   let url = "api/"+this.id;
 
-  fetch(url, {metod : 'delete'})
+  fetch(url, {method : 'delete'})
   .then((resp) =>resp.json())
   .then((data)=>{console.log(data);
   })
@@ -28,7 +29,35 @@ function deleteData()
   });
 }
 
-getButtons.forEach(button => button.addEventListener('click', fetchData))
-deleteB.forEach(deletebtn => deletebtn.addEventListener('click', deleteData))
+function postData()
+{
+  let url = "api/"+this.id;
+
+  fetch(url, {
+    method : 'post',
+    headers: {
+      'Accept': 'application/json, text-plain, */*',
+      'Content-type': 'application/json'
+    },
+    body: JSON.stringify({
+      model: "F55",
+      modelName : "Mini Cooper F55",
+      pricing: "27790",
+      modelDetails: "It’s the turbocharged motoring icon, with more handles to love. The MINI 5 door boasts the same iconic good looks as its 3 door brother, but features an extra pair of passenger doors for practical access to its spacious cabin. And despite its slightly longer frame, the MINI 5 door’s wide, athletic stance and wheels-pushed-out design deliver the corner-carving agility you’d expect from any MINI.",
+      imgPath: "F55.jpg"
+    })
+  })
+  .then((resp) =>resp.json())
+  .then((data)=>{console.log(data);
+  })
+  .catch(function(error){
+    console.log(error);
+  });
+}
+
+
+getButtons.forEach(button => button.addEventListener('click', fetchData));
+deleteButton.forEach(deletebtn => deletebtn.addEventListener('click', deleteData));
+postButton.forEach(postbtn => postbtn.addEventListener('click', postData));
 
 })();

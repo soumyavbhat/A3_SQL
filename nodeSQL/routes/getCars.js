@@ -3,7 +3,8 @@ var connect = require('../utils/sqlConnect');
 var router = express.Router();
 
 /* GET home page. */
-router.get('/getCars', (req, res) => {
+// no need to type /getCars becuase it will create a sub route
+router.get('/', (req, res) => {
   connect.query('SELECT * FROM mainmodel', (err, result)=> {
     if (err)
     {
