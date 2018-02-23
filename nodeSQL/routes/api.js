@@ -73,4 +73,18 @@ router.post('/:id', (req, res) =>{
 });
 });
 
+router.put('/:id', (req, res) =>{
+  console.log(`hit post route`);
+
+  connect.query(`Insert into mainmodel (id, model, modelName, pricing, modelDetails, imgPath) Values(Null, "${req.body.model}","${req.body.modelName}", "${req.body.pricing}", "${req.body.modelDetails}", "${req.body.imgPath}");`,  (err, data) =>  {
+  if (err){
+    throw(err);
+  }
+  else{
+    res.json(data);
+  }
+});
+});
+
+
 module.exports = router;
