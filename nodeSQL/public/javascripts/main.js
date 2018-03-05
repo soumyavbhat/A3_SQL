@@ -1,4 +1,6 @@
 (()=>{
+
+  console.log("connected");
 let getButtons = document.querySelectorAll('.getButton');
 let deleteButton = document.querySelectorAll('.deleteButton');
 let postButton = document.querySelectorAll('.postButton');
